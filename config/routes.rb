@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get '/next_question', to: 'questions#next_question'
 
   resources :buddies, only: %i[new create show update]
-  resources :projects, only: %i[new create show update]
+  resources :projects, only: %i[index new create show update]
 end
