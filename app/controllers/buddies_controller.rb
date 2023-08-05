@@ -1,44 +1,44 @@
 class BuddiesController < ApplicationController
   def index
-    @buddies = Buddie.all
+    @buddys = Buddy.all
   end
 
   def new
-    @buddie = Buddie.new
+    @buddy = Buddy.new
   end
 
   def show
-    @buddie = Buddie.find(params[:id])
+    @buddy = Buddy.find(params[:id])
   end
 
   def create
-    @buddie = Buddie.new(buddie_params)
-    if @buddie.save
-      redirect_to buddies_path
+    @buddy = Buddy.new(buddy_params)
+    if @buddy.save
+      redirect_to buddys_path
     else
       render 'new'
     end
   end
 
   def update
-    @buddie = current_user.buddies.find(params[:id])
+    @buddy = current_user.buddys.find(params[:id])
 
-    if @buddie.update(buddie_params)
-      redirect_to buddies_path, notice: 'Buddie was updated.'
+    if @buddy.update(buddy_params)
+      redirect_to buddys_path, notice: 'Buddy was updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @buddie = Buddie.find(params[:id])
-    @buddie.destroy
-    redirect_to buddies_path
+    @buddy = Buddy.find(params[:id])
+    @buddy.destroy
+    redirect_to buddys_path
   end
 
   private
 
-  def buddie_params
-    params.require(:buddie).permit(:name, :personality, :image_url)
+  def buddy_params
+    params.require(:buddy).permit(:name, :personality)
   end
 end
