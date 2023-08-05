@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root to: 'home#index'
+
+  get '/dashboard', to: 'projects#dashboard', as: :dashboard
+  get '/next_question', to: 'questions#next_question'
+
+  resources :buddies, only: %i[new create show update]
+  resources :projects, only: %i[new create show update]
 end
