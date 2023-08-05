@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @projects = Project.all
   end
@@ -26,6 +28,14 @@ class ProjectsController < ApplicationController
     redirect_to projects_path, status: :see_other
   end
 
+  def dashboard
+    @recommended_projects = Project.where(category: current_user.interest)
+    @project = Project.find(current_user.project_id)
+    # I think we can use this line below to access the buddy's name, love, etc.
+    @buddy = current_user.buddy
+    # Not so sure how we will do this right now.
+    # @progress =
+  end
   private
 
   def project_params
