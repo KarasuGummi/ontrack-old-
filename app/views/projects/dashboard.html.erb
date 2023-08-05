@@ -7,15 +7,18 @@
       <p>Current Points:</p>
     </div>
     <div class="buddy-container">
-      <h5>Place buddy inside a big square here.</h5>
-      <img class="buddy-image" src="" alt="OnTrack Buddy">
+      <%= cl_image_tag("https://res.cloudinary.com/du53mgiot/image/upload/v1691219849/dog_main.png", height: 150, crop: :fill) %>
     </div>
-    <div class="buddy-links">
-      <a href="#">Feed</a>
-      <a href="#">Say Hi</a>
+    <div class="buddy-links text-center">
+      <%= link_to dashboard_path do %>
+        <i class="fa-solid fa-bone"></i>
+      <% end %>
+      <%= link_to dashboard_path do %>
+        <i class="fa-solid fa-comments"></i>
+      <% end %>
     </div>
     <div class="project-recommendations">
-      <h5>Place project recommendations here.</h5>
+      <p>Place project recommendations here.</p>
     </div>
   </div>
 </div>
